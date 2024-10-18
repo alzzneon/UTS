@@ -5,6 +5,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.project.uts.databinding.ActivityMainBinding
+import android.content.Intent
 
 class MainActivity : AppCompatActivity() {
 
@@ -15,15 +16,14 @@ class MainActivity : AppCompatActivity() {
         // Listener untuk tombol "Tambah Buku"
         binding.buttonTambah.setOnClickListener {
             Toast.makeText(this, "Menu Tambah Buku", Toast.LENGTH_SHORT).show()
-            // Intent untuk pindah ke activity TambahBuku (belum dibuat)
-            // startActivity(Intent(this, TambahBukuActivity::class.java))
-        }
+            val intent = Intent(this, daftarbuku::class.java)
+            startActivity(intent)
 
+    }
         // Listener untuk tombol "Daftar Buku"
         binding.buttonDaftar.setOnClickListener {
             Toast.makeText(this, "Menu Daftar Buku", Toast.LENGTH_SHORT).show()
-            // Intent untuk pindah ke activity DaftarBuku (belum dibuat)
-            // startActivity(Intent(this, DaftarBukuActivity::class.java))
+
         }
     }
 }
