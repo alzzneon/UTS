@@ -5,26 +5,24 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
+import com.project.uts.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main) // Menghubungkan dengan layout XML
-
-        // Inisialisasi tombol dari layout
-        val buttonTambah = findViewById<Button>(R.id.buttonTambah)
-        val buttonDaftar = findViewById<Button>(R.id.buttonDaftar)
+        val binding: ActivityMainBinding = DataBindingUtil.setContentView(this,R.layout.activity_main)// Menghubungkan dengan layout XML dengan binding
 
         // Listener untuk tombol "Tambah Buku"
-        buttonTambah.setOnClickListener {
+        binding.buttonTambah.setOnClickListener {
             Toast.makeText(this, "Menu Tambah Buku", Toast.LENGTH_SHORT).show()
             // Intent untuk pindah ke activity TambahBuku (belum dibuat)
             // startActivity(Intent(this, TambahBukuActivity::class.java))
         }
 
         // Listener untuk tombol "Daftar Buku"
-        buttonDaftar.setOnClickListener {
+        binding.buttonDaftar.setOnClickListener {
             Toast.makeText(this, "Menu Daftar Buku", Toast.LENGTH_SHORT).show()
             // Intent untuk pindah ke activity DaftarBuku (belum dibuat)
             // startActivity(Intent(this, DaftarBukuActivity::class.java))
