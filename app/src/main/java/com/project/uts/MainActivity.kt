@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
         // Listener untuk tombol "Tambah Buku"
         binding.buttonTambah.setOnClickListener {
             Toast.makeText(this, "Menu Tambah Buku", Toast.LENGTH_SHORT).show()
-            val intent = Intent(this, daftarbuku::class.java)
+            val intent = Intent(this, DaftarBuku::class.java)
             startActivity(intent)
 
     }

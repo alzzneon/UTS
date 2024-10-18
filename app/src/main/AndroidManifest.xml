@@ -25,7 +25,7 @@
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".daftarbuku"
+            android:name=".DaftarBuku"
             android:exported="false" />
     </application>
 
