@@ -46,6 +46,10 @@ class DaftarBuku : AppCompatActivity() {
                 addBook()  // Jika mode tambah, tambahkan buku baru
             }
         }
+        binding.buttonkembali.setOnClickListener {
+            finish()  // Menutup activity dan kembali ke halaman sebelumnya
+        }
+
     }
 
     private fun addBook() {
