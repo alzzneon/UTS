@@ -1,6 +1,8 @@
 package com.project.uts
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -24,7 +26,6 @@ class ListBuku : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
 
         loadBooks()
-
     }
 
     private fun loadBooks() {
@@ -32,10 +33,10 @@ class ListBuku : AppCompatActivity() {
             val books = bukuDatabase.BukuDao().getAllBooks()  // Mengambil semua buku dari database
             withContext(Dispatchers.Main) {
                 bukuAdapter = BukuAdapter(books, onEditClick = { buku ->
-                    // Logika edit buku
-                    editBook(buku)
+                    // Handle edit buku
+                    editBook(buku)  // Pastikan Anda mengirimkan objek buku
                 }, onDeleteClick = { buku ->
-                    // Logika hapus buku
+                    // Handle hapus buku
                     deleteBook(buku)
                 })
                 recyclerView.adapter = bukuAdapter
@@ -44,13 +45,28 @@ class ListBuku : AppCompatActivity() {
     }
 
     private fun editBook(buku: Buku) {
-        // Implementasi fitur edit buku
+        val intent = Intent(this, DaftarBuku::class.java).apply {
+            putExtra("EXTRA_ID_BUKU", buku.id)  // Mengirim ID buku
+            putExtra("EXTRA_JUDUL_BUKU", buku.judul)  // Mengirim judul buku
+            putExtra("EXTRA_KATEGORI_BUKU", buku.kategori)  // Mengirim kategori buku
+            putExtra("EXTRA_PENULIS_BUKU", buku.penulis)  // Mengirim penulis buku
+        }
+        startActivity(intent)  // Memulai activity DaftarBuku
     }
 
     private fun deleteBook(buku: Buku) {
         CoroutineScope(Dispatchers.IO).launch {
-            bukuDatabase.BukuDao().deleteBuku(buku)
-            loadBooks() // Refresh data setelah buku dihapus
+            try {
+                bukuDatabase.BukuDao().deleteBuku(buku)
+                withContext(Dispatchers.Main) {
+                    loadBooks() // Refresh data setelah buku dihapus
+                }
+            } catch (e: Exception) {
+                withContext(Dispatchers.Main) {
+                    // Menangani error, misalnya dengan menampilkan Toast
+                    Toast.makeText(this@ListBuku, "Gagal menghapus buku!", Toast.LENGTH_SHORT).show()
+                }
+            }
         }
     }
 }

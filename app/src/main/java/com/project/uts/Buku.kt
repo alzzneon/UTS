@@ -8,7 +8,6 @@ data class Buku(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
     val judul: String,
-    val buku: String,
     val penulis: String,
     val kategori: String
 )
