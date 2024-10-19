@@ -11,15 +11,15 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding: ActivityMainBinding = DataBindingUtil.setContentView(this,R.layout.activity_main)// Menghubungkan dengan layout XML dengan binding
+        val binding: ActivityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
         // Listener untuk tombol "Tambah Buku"
         binding.buttonTambah.setOnClickListener {
             Toast.makeText(this, "Menu Tambah Buku", Toast.LENGTH_SHORT).show()
             val intent = Intent(this, DaftarBuku::class.java)
             startActivity(intent)
+        }
 
-    }
         // Listener untuk tombol "Daftar Buku"
         binding.buttonDaftar.setOnClickListener {
             Toast.makeText(this, "Menu Daftar Buku", Toast.LENGTH_SHORT).show()
@@ -28,3 +28,4 @@ class MainActivity : AppCompatActivity() {
         }
     }
 }
+

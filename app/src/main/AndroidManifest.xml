@@ -27,6 +27,9 @@
         <activity
             android:name=".DaftarBuku"
             android:exported="false" />
+        <activity
+            android:name=".ListBuku"
+            android:exported="false" />
     </application>
 
 </manifest>
