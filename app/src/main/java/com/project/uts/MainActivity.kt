@@ -23,7 +23,8 @@ class MainActivity : AppCompatActivity() {
         // Listener untuk tombol "Daftar Buku"
         binding.buttonDaftar.setOnClickListener {
             Toast.makeText(this, "Menu Daftar Buku", Toast.LENGTH_SHORT).show()
-
+            val intent = Intent(this, ListBuku::class.java)
+            startActivity(intent)
         }
     }
 }
