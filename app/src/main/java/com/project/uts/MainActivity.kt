@@ -14,9 +14,9 @@ class MainActivity : AppCompatActivity() {
         val binding: ActivityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
         // Listener untuk tombol "Tambah Buku"
-        binding.buttonTambah.setOnClickListener {
-            Toast.makeText(this, "Menu Tambah Buku", Toast.LENGTH_SHORT).show()
-            val intent = Intent(this, DaftarBuku::class.java)
+        binding.buttonebook.setOnClickListener {
+            Toast.makeText(this, "Menu list", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, ListBuku::class.java)
             startActivity(intent)
         }
 
