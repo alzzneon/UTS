@@ -32,18 +32,6 @@
         tools:ignore="HardcodedText" />
 
     <EditText
-        android:id="@+id/etidbuku"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="ID"
-        android:inputType="number"
-        android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        tools:ignore="HardcodedText" />
-
-    <EditText
         android:id="@+id/etjudulbuku"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -51,20 +39,9 @@
         android:inputType="text"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etidbuku"
-        tools:ignore="HardcodedText" />
-
-    <EditText
-        android:id="@+id/etkategori"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Kategori Buku"
-        android:inputType="text"
-        android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etjudulbuku"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
         tools:ignore="HardcodedText" />
 
     <EditText
@@ -75,6 +52,7 @@
         android:inputType="text"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etkategori"
         tools:ignore="HardcodedText" />
@@ -86,8 +64,22 @@
         android:layout_gravity="center"
         android:text="Tambah"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etpenerbit"
+        tools:ignore="HardcodedText" />
+
+    <EditText
+        android:id="@+id/etkategori"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Kategori Buku"
+        android:inputType="text"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etjudulbuku"
         tools:ignore="HardcodedText" />
 
     <Button

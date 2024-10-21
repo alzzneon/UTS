@@ -1,14 +1,15 @@
 package com.project.uts
 
+import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import android.content.Context
 
-@Database(entities = [Buku::class], version = 1, exportSchema = false)
+@Database(entities = [Buku::class, Pengunjung::class], version = 1, exportSchema = false)
 abstract class BukuDatabase : RoomDatabase() {
 
-    abstract fun BukuDao(): BukuDao
+    abstract fun bukuDao(): BukuDao
+    abstract fun pengunjungDao(): PengunjungDao
 
     companion object {
         @Volatile
@@ -19,7 +20,7 @@ abstract class BukuDatabase : RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     BukuDatabase::class.java,
-                    "buku_database"
+                    "buku_pengunjung_database"
                 ).build()
                 INSTANCE = instance
                 instance

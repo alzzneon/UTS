@@ -26,6 +26,11 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, ListBuku::class.java)
             startActivity(intent)
         }
+        binding.buttonTambahPengunjung.setOnClickListener {
+            Toast.makeText(this, "Menu Daftar Buku", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, PengunjungActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
 

@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -25,12 +26,19 @@ class ListBuku : AppCompatActivity() {
         recyclerView = findViewById(R.id.rv_listBuku)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
+        val addButton = findViewById<FloatingActionButton>(R.id.tambahBuku)
+
+        addButton.setOnClickListener{
+            val intent = Intent(this, DaftarBuku::class.java)
+            startActivity(intent)
+        }
+
         loadBooks()
     }
 
     private fun loadBooks() {
         CoroutineScope(Dispatchers.IO).launch {
-            val books = bukuDatabase.BukuDao().getAllBooks()  // Mengambil semua buku dari database
+            val books = bukuDatabase.bukuDao().getAllBooks()  // Mengambil semua buku dari database
             withContext(Dispatchers.Main) {
                 bukuAdapter = BukuAdapter(books, onEditClick = { buku ->
                     // Handle edit buku
@@ -45,7 +53,7 @@ class ListBuku : AppCompatActivity() {
     }
 
     private fun editBook(buku: Buku) {
-        val intent = Intent(this, DaftarBuku::class.java).apply {
+        val intent = Intent(this, UpdateBuku::class.java).apply {
             putExtra("EXTRA_ID_BUKU", buku.id)  // Mengirim ID buku
             putExtra("EXTRA_JUDUL_BUKU", buku.judul)  // Mengirim judul buku
             putExtra("EXTRA_KATEGORI_BUKU", buku.kategori)  // Mengirim kategori buku
@@ -57,7 +65,7 @@ class ListBuku : AppCompatActivity() {
     private fun deleteBook(buku: Buku) {
         CoroutineScope(Dispatchers.IO).launch {
             try {
-                bukuDatabase.BukuDao().deleteBuku(buku)
+                bukuDatabase.bukuDao().deleteBuku(buku)
                 withContext(Dispatchers.Main) {
                     loadBooks() // Refresh data setelah buku dihapus
                 }
