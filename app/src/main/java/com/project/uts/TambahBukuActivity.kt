@@ -1,25 +1,20 @@
 package com.project.uts
 
 import android.os.Bundle
-import android.text.TextUtils
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import com.project.uts.databinding.ActivityDaftarbukuBinding
+import com.project.uts.databinding.ActivityTambahbukuBinding
 
-class DaftarBuku : AppCompatActivity() {
+class TambahBukuActivity : AppCompatActivity() {
     private lateinit var repoBuku: RepoBuku
-    private lateinit var binding: ActivityDaftarbukuBinding
+    private lateinit var binding: ActivityTambahbukuBinding
     private var isEditMode = false
     private var bookId: Int? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_daftarbuku)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_tambahbuku)
 
         repoBuku = RepoBuku(this)
 
@@ -36,12 +31,12 @@ class DaftarBuku : AppCompatActivity() {
                 binding,
                 object : RepoBuku.BukuCallback {
                     override fun onSuccess(message: String) {
-                        Toast.makeText(this@DaftarBuku, message, Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@TambahBukuActivity, message, Toast.LENGTH_SHORT).show()
                         finish() // Kembali ke activity sebelumnya
                     }
 
                     override fun onError(message: String) {
-                        Toast.makeText(this@DaftarBuku, message, Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@TambahBukuActivity, message, Toast.LENGTH_SHORT).show()
                     }
                 }
             )

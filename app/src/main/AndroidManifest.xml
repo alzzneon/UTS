@@ -15,11 +15,14 @@
         <activity
             android:name=".TambahPengujungActivity"
             android:exported="false" />
-        <activity
-            android:name=".UpdateBuku"
-            android:exported="false" />
+<!--        <activity-->
+<!--            android:name=".UpdateBuku"-->
+<!--            android:exported="false" />-->
         <activity
             android:name=".ListBuku"
+            android:exported="false" />
+        <activity
+            android:name=".ListEbook"
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
@@ -34,8 +37,12 @@
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".DaftarBuku"
+            android:name=".TambahBukuActivity"
             android:exported="false" />
+        <activity
+            android:name=".TambahEbookActivity"
+            android:exported="false"/>
+
     </application>
 
 </manifest>

@@ -7,7 +7,7 @@
     android:padding="16dp">
 
     <EditText
-        android:id="@+id/edt_judul"
+        android:id="@+id/edt_juduleb"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="Judul Buku"
@@ -19,19 +19,19 @@
         app:layout_constraintEnd_toEndOf="parent"/>
 
     <EditText
-        android:id="@+id/edt_kategori"
+        android:id="@+id/edt_kategorieb"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="Kategori"
         android:layout_marginTop="16dp"
         android:padding="12dp"
         android:background="@android:drawable/editbox_background"
-        app:layout_constraintTop_toBottomOf="@id/edt_judul"
+        app:layout_constraintTop_toBottomOf="@id/edt_juduleb"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
     <EditText
-        android:id="@+id/edt_penulis"
+        android:id="@+id/edt_penuliseb"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="Penulis"
@@ -39,7 +39,7 @@
         android:layout_marginBottom="8dp"
         android:padding="12dp"
         android:background="@android:drawable/editbox_background"
-        app:layout_constraintTop_toBottomOf="@id/edt_kategori"
+        app:layout_constraintTop_toBottomOf="@id/edt_kategorieb"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>

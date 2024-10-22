@@ -18,7 +18,6 @@ class BukuAdapter(
             binding.tvKategoriBuku.text = buku.kategori
             binding.tvNamaAuthor.text = buku.penulis
 
-            // Edit dan Hapus Buku
             binding.ibEdit.setOnClickListener {
                 onEditClick(buku)
             }

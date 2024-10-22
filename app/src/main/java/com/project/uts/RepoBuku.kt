@@ -2,7 +2,7 @@ package com.project.uts
 
 import android.content.Context
 import android.text.TextUtils
-import com.project.uts.databinding.ActivityDaftarbukuBinding
+import com.project.uts.databinding.ActivityTambahbukuBinding
 import com.project.uts.databinding.ActivityUpdateBukuBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -28,7 +28,7 @@ class RepoBuku(private val context: Context) {
         var isValid = true
 
         when(binding) {
-            is ActivityDaftarbukuBinding-> {
+            is ActivityTambahbukuBinding-> {
                 if (TextUtils.isEmpty(bookTitle)) {
                     binding.etjudulbuku.error = "Judul Buku diperlukan"
                     isValid = false
@@ -66,7 +66,7 @@ class RepoBuku(private val context: Context) {
         bookTitle: String,
         bookType: String,
         authorPublisher: String,
-        binding: ActivityUpdateBukuBinding,
+        binding: ActivityTambahbukuBinding,
         callback: BukuCallback
     ) {
         if (!validateInput(bookTitle, bookType, authorPublisher, binding)) return

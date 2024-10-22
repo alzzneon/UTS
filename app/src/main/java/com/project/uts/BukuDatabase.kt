@@ -5,11 +5,11 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [Buku::class, Pengunjung::class], version = 1, exportSchema = false)
+@Database(entities = [Buku::class, Ebook::class, Pengunjung::class], version = 1, exportSchema = false)
 abstract class BukuDatabase : RoomDatabase() {
-
     abstract fun bukuDao(): BukuDao
     abstract fun pengunjungDao(): PengunjungDao
+    abstract fun ebookDao(): EbookDao
 
     companion object {
         @Volatile
@@ -20,7 +20,7 @@ abstract class BukuDatabase : RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     BukuDatabase::class.java,
-                    "buku_pengunjung_database"
+                    "buku_ebook_pengunjung_database"
                 ).build()
                 INSTANCE = instance
                 instance

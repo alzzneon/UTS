@@ -34,7 +34,7 @@ class ListBuku : AppCompatActivity() {
         val addButton = findViewById<FloatingActionButton>(R.id.tambahBuku)
 
         addButton.setOnClickListener{
-            val intent = Intent(this, DaftarBuku::class.java)
+            val intent = Intent(this, TambahBukuActivity::class.java)
             startActivity(intent)
         }
 

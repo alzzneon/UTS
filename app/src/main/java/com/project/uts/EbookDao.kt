@@ -1,16 +1,11 @@
 package com.project.uts
 
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
-import androidx.room.Update
+import androidx.room.*
 
 @Dao
 interface EbookDao {
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert
     suspend fun insertEbook(ebook: Ebook)
 
     @Update
@@ -19,12 +14,9 @@ interface EbookDao {
     @Delete
     suspend fun deleteEbook(ebook: Ebook)
 
-    @Query("SELECT * FROM ebook ORDER BY id ASC")
+    @Query("SELECT * FROM ebook")
     suspend fun getAllEbooks(): List<Ebook>
 
-    @Query("SELECT * FROM ebook WHERE id = :ebookId")
+    @Query("SELECT * FROM ebook WHERE id = :ebookId LIMIT 1")
     suspend fun getEbookById(ebookId: Int): Ebook?
-
-    @Query("SELECT * FROM ebook WHERE kategori = :kategori ORDER BY id ASC")
-    suspend fun getEbooksByKategori(kategori: String): List<Ebook>
 }

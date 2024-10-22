@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="4dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <!-- Nama Ebook -->
+        <TextView
+            android:id="@+id/ebookNamaTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Nama Ebook"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+
+        <TextView
+            android:id="@+id/ebookPenerbitTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Penerbit"
+            android:textSize="14sp"
+            app:layout_constraintTop_toBottomOf="@id/ebookNamaTextView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="8dp" />
+
+        <TextView
+            android:id="@+id/ebookJenisTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Jenis Ebook"
+            android:textSize="14sp"
+            app:layout_constraintTop_toBottomOf="@id/ebookPenerbitTextView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="8dp" />
+
+        <ImageView
+            android:id="@+id/ibEditEbook"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_editbuku"
+            android:padding="18dp"
+            android:contentDescription="Edit"
+            app:layout_constraintTop_toTopOf="@id/ebookJenisTextView"
+            app:layout_constraintEnd_toStartOf="@+id/ibDeleteEbook" />
+
+        <ImageView
+            android:id="@+id/ibDeleteEbook"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_delbuku"
+            android:padding="18dp"
+            android:contentDescription="Delete"
+            app:layout_constraintTop_toTopOf="@id/ebookJenisTextView"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

@@ -13,16 +13,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding: ActivityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-        // Listener untuk tombol "Tambah Buku"
+        // Listener untuk tombol "E Buku"
         binding.buttonebook.setOnClickListener {
-            Toast.makeText(this, "Menu list", Toast.LENGTH_SHORT).show()
-            val intent = Intent(this, ListBuku::class.java)
+            Toast.makeText(this, "Menu List Buku", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this,ListEbook ::class.java)
             startActivity(intent)
         }
 
-        // Listener untuk tombol "Daftar Buku"
+        // Listener untuk tombol "Buku"
         binding.buttonDaftar.setOnClickListener {
-            Toast.makeText(this, "Menu Daftar Buku", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Menu List Ebook", Toast.LENGTH_SHORT).show()
             val intent = Intent(this, ListBuku::class.java)
             startActivity(intent)
         }
