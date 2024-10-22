@@ -12,7 +12,7 @@ import kotlinx.coroutines.withContext
 import com.project.uts.databinding.ActivityDaftarbukuBinding
 
 class DaftarBuku : AppCompatActivity() {
-
+    private lateinit var repoBuku: RepoBuku
     private lateinit var binding: ActivityDaftarbukuBinding
     private var isEditMode = false
     private var bookId: Int? = null
@@ -21,45 +21,33 @@ class DaftarBuku : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_daftarbuku)
 
+        repoBuku = RepoBuku(this)
+
         binding.btntambahbuku.setOnClickListener {
-                addBook()  // Jika mode tambah, tambahkan buku baru
+            val bookTitle = binding.etjudulbuku.text.toString()
+            val bookType = binding.etkategori.text.toString()
+            val authorPublisher = binding.etpenerbit.text.toString()
+
+            // Panggil addBook dan berikan callback
+            repoBuku.addBook(
+                bookTitle,
+                bookType,
+                authorPublisher,
+                binding,
+                object : RepoBuku.BukuCallback {
+                    override fun onSuccess(message: String) {
+                        Toast.makeText(this@DaftarBuku, message, Toast.LENGTH_SHORT).show()
+                        finish() // Kembali ke activity sebelumnya
+                    }
+
+                    override fun onError(message: String) {
+                        Toast.makeText(this@DaftarBuku, message, Toast.LENGTH_SHORT).show()
+                    }
+                }
+            )
         }
+
     }
 
-    private fun addBook() {
-        val bookTitle = binding.etjudulbuku.text.toString()
-        val bookType = binding.etkategori.text.toString()
-        val authorPublisher = binding.etpenerbit.text.toString()
 
-        // Validasi input
-        if (TextUtils.isEmpty(bookTitle)) {
-            binding.etjudulbuku.error = "Judul Buku diperlukan"
-            return
-        }
-        if (TextUtils.isEmpty(bookType)) {
-            binding.etkategori.error = "Kategori Buku diperlukan"
-            return
-        }
-        if (TextUtils.isEmpty(authorPublisher)) {
-            binding.etpenerbit.error = "Penerbit/Penulis diperlukan"
-            return
-        }
-
-        // Buat objek Buku baru tanpa menyertakan id
-        val newBook = Buku(
-            judul = bookTitle,
-            kategori = bookType,
-            penulis = authorPublisher
-        )
-
-        // Simpan buku ke database
-        CoroutineScope(Dispatchers.IO).launch {
-            val db = BukuDatabase.getDatabase(applicationContext)
-            db.bukuDao().insertBuku(newBook)  // Panggil fungsi insertBuku
-            withContext(Dispatchers.Main) {
-                Toast.makeText(this@DaftarBuku, "Buku berhasil ditambahkan!", Toast.LENGTH_SHORT).show()
-                finish()  // Kembali ke halaman sebelumnya setelah selesai
-            }
-        }
-    }
 }
